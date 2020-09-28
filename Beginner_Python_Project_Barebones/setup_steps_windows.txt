@@ -1,0 +1,36 @@
+WINDOWS
+
+Pre-requisite:
+Install Anaconda 
+    https://www.anaconda.com/products/individual#Downloads
+When installing on Windows, click checkmark box to add to path
+    If you don't do this step, add to path system variable:
+        https://www.geeksforgeeks.org/how-to-setup-anaconda-path-to-environment-variable/
+Text Editor (I use Visual Studio Code)
+    https://code.visualstudio.com/
+
+
+Use cmd as terminal (">")
+>conda update -n base -c defaults conda
+
+
+Create Virtual Environment:
+>pip install virtualenv
+    Installs the package virtualenv for Python. It allows you to create a record of versions and packages, and use them by activating the environment.
+>cd path\to\your\folder
+    Change directories to a new folder in your documents, preferably where you store Python tips.
+>virtualenv venv
+    Creates the virtual environment named venv.
+>venv\Scripts\activate
+    This activates the virtual environment.
+
+
+Flask Environment Setup:
+>set FLASK_APP=app.py
+>set FLASK_ENV=development
+
+Install all relevant Python packages:
+>pip install -r "requirements.txt"
+
+Flask Run:
+>flask run
