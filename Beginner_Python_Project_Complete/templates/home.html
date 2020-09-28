@@ -1,0 +1,81 @@
+{% extends "material/base.html" %}
+
+{% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<style>
+    .container,
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-wrapper {
+        background: linear-gradient(to right, #650397, #FB9F04);
+    }
+</style>
+
+<nav class="blue">
+    <div class="nav-wrapper">
+        <a href="/" style="padding-left:2em;">Restaurant Host Portal</a>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+            <div class="container">
+                <h5>{{ guest_info.name }}</h5>
+            </div>
+        </div>
+        <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab"><a href="#age">Age</a></li>
+                <li class="tab"><a href="#account_balance">Account Balance</a></li>
+                <li class="tab"><a href="#diamond_status">Diamond Status</a></li>
+                <li class="tab"><a href="#extra_guests">Extra Guests</a></li>
+                <li class="tab"><a href="#dinner_order">Dinner Order</a></li>
+            </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+            <div class="container">
+                <div id="age">
+                        <p class="flow-text">{{ guest_info.age }}</p>
+                </div>
+                <div id="account_balance">
+                    <p class="flow-text">${{ guest_info.account_balance }}</p>
+                </div>
+                <div id="diamond_status">
+                    <p class="flow-text">{{ guest_info.diamond_status }}</p>
+                </div>
+                <div id="extra_guests">
+                    {% for guest in guest_info.extra_guests %}
+                        <p class="flow-text">{{ guest }}<p>
+                    {% endfor %}
+                </div>
+                <div id="dinner_order" class="col s12">
+                    <ul class="collection with-header">
+                        <li class="collection-header"><h4>Dinner</h4></li>
+                        {% for key, value in guest_info.dinner_order.items() %}
+                        {% if key != "Misc" %}
+                            <li class="collection-item">{{ key }}&nbsp;<div class="secondary-content" style="padding-left: 100px;">{{ value }}</div></li>
+                        {% else %}
+                            {% for misc in guest_info.dinner_order.Misc %}
+                            <li class="collection-item">Misc&nbsp;<div class="secondary-content" style="padding-left: 100px;">{{ misc }}</div></li>
+                            {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                        <li class="collection-item">Total&nbsp;<div class="secondary-content" style="padding-left: 100px;">${{ tot_din_cost }}</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var el = document.querySelector('.tabs');
+    var instance = M.Tabs.init(el, {});
+</script>
+{% endblock %}

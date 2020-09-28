@@ -1,0 +1,36 @@
+MAC
+
+Pre-requisite:
+Instal Visual Studio Code
+    https://code.visualstudio.com/
+Install Anaconda 
+    https://www.anaconda.com/products/individual#Downloads
+Text Editor (I use Visual Studio Code)
+    https://code.visualstudio.com/
+
+
+Use terminal (">")
+>conda update -n base -c defaults conda
+
+
+Create Virtual Environment:
+>pip install virtualenv
+    Installs the package virtualenv for Python. It allows you to create a record of versions and packages, and use them by activating the environment.
+>cd path/to/your/folder
+    Change directories to a new folder in your documents, preferably where you store Python tips/code.
+>virtualenv venv
+    Creates the virtual environment named venv.
+>source venv/bin/activate
+This activates the virtual environment.
+
+
+Flask Environment Setup:
+>export FLASK_APP=app.py
+>export FLASK_ENV=development
+
+Install all relevant Python packages:
+>pip install -r "requirements.txt"
+
+Flask Run:
+>flask run
+    Runs the Python Flask app.
